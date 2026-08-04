@@ -42,5 +42,33 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-FLYR Labs is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
+FLYR (formerly FLYR Labs) is a San Francisco travel-technology company building an AI-native commercial
+operating system for airlines, cargo carriers and hospitality operators — the Cirrus Revenue Operating
+System, an Offer & Order Management System built on the IATA NDC and ONE Order standards, and the FLYR
+Hospitality platform (Optimize, Insights, Planning, Groups) serving 2,300+ properties.
+
+## API posture
+
+FLYR's APIs are commercial and gated. As of the 2026-08-04 enrichment pass:
+
+- **Developer portal** — `https://developer.flyr.com/` is a Document360 knowledge base where every path,
+  including `/docs/home`, `/api-docs` and `/sitemap.xml`, 302-redirects to `/login`. Self-registration is
+  offered; nothing is readable anonymously.
+- **GraphQL** — `https://graphql.pacerevenue.com/graphql` is live (HTTP 200) but introspection is
+  disabled, so no SDL was captured and none was reconstructed.
+- **REST** — `api.pacerevenue.com` returns nginx 403 to anonymous callers; `legacy-api.pacerevenue.com`
+  serves JSON 404s. No OpenAPI or Swagger document was found at any probed path on any host.
+- **No** MCP server, A2A agent card, `security.txt`, OIDC/OAuth discovery document, AsyncAPI, public
+  status page or first-party SDK was found.
+- **Found:** a real `llms.txt` at `https://www.flyrhospitality.com/llms.txt`, saved verbatim.
+- `flyr.com` itself is behind a SiteGround JavaScript proof-of-work challenge that returns HTTP 202 to
+  every non-browser client, including `robots.txt` and `sitemap.xml`, so corporate-site URLs here were
+  confirmed from public search-index results rather than a direct fetch.
+
+## Links
+
+- https://flyr.com/
+- https://www.flyrhospitality.com/
+- https://developer.flyr.com/
+- https://github.com/FlyrInc
 - https://forgeglobal.com/flyr-labs_stock/

@@ -1,0 +1,111 @@
+generated: '2026-08-04'
+method: probed
+source: live HTTP probe of every FLYR-controlled host discovered in this pass
+summary:
+  hosts_probed: 6
+  documents_found: 0
+  note: >-
+    No RFC 9116 security.txt, OIDC/OAuth discovery document, RFC 9727 api-catalog, ai-plugin.json or A2A
+    agent card is served by any FLYR host. Two hosts answer 200 to every /.well-known/* path with an HTML
+    single-page-application shell (developer.flyr.com = Document360 login shell; app.pacerevenue.com =
+    Vite console shell) — these are catch-all false positives and are recorded as misses, not hits.
+    Because nothing was found, NO `WellKnown` / `SecurityTxt` / `APICatalog` pointer is wired in apis.yml.
+hosts:
+- host: https://developer.flyr.com
+  catch_all_html: true
+  documents:
+  - {path: /.well-known/security.txt, status: 200, result: html-login-shell}
+  - {path: /.well-known/openid-configuration, status: 200, result: html-login-shell}
+  - {path: /.well-known/oauth-authorization-server, status: 200, result: html-login-shell}
+  - {path: /.well-known/oauth-protected-resource, status: 200, result: html-login-shell}
+  - {path: /.well-known/api-catalog, status: 200, result: html-login-shell}
+  - {path: /.well-known/ai-plugin.json, status: 200, result: html-login-shell}
+  - {path: /.well-known/agent-card.json, status: 200, result: html-login-shell}
+  - {path: /.well-known/agent.json, status: 200, result: html-login-shell}
+- host: https://www.flyrhospitality.com
+  catch_all_html: false
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /llms.txt, status: 200, result: saved, file: ../llms/flyr-labs-llms.txt}
+  - {path: /robots.txt, status: 200}
+  - {path: /sitemap.xml, status: 200}
+- host: https://api.pacerevenue.com
+  catch_all_html: false
+  documents:
+  - {path: /.well-known/security.txt, status: 403}
+  - {path: /.well-known/openid-configuration, status: 403}
+  - {path: /.well-known/oauth-authorization-server, status: 403}
+  - {path: /.well-known/oauth-protected-resource, status: 403}
+  - {path: /.well-known/api-catalog, status: 403}
+  - {path: /.well-known/ai-plugin.json, status: 403}
+  - {path: /.well-known/agent-card.json, status: 403}
+  - {path: /.well-known/agent.json, status: 403}
+  note: nginx rejects all anonymous requests with 403
+- host: https://graphql.pacerevenue.com
+  catch_all_html: false
+  documents:
+  - {path: /.well-known/security.txt, status: 403}
+  - {path: /.well-known/openid-configuration, status: 403}
+  - {path: /.well-known/oauth-authorization-server, status: 403}
+  - {path: /.well-known/oauth-protected-resource, status: 403}
+  - {path: /.well-known/api-catalog, status: 403}
+  - {path: /.well-known/agent-card.json, status: 403}
+  - {path: /.well-known/agent.json, status: 403}
+- host: https://legacy-api.pacerevenue.com
+  catch_all_html: false
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+- host: https://flyr.com
+  catch_all_html: false
+  documents:
+  - {path: /.well-known/security.txt, status: 202, result: siteground-captcha-challenge}
+  - {path: /.well-known/openid-configuration, status: 202, result: siteground-captcha-challenge}
+  - {path: /.well-known/api-catalog, status: 202, result: siteground-captcha-challenge}
+  - {path: /.well-known/agent-card.json, status: 202, result: siteground-captcha-challenge}
+  - {path: /.well-known/agent.json, status: 202, result: siteground-captcha-challenge}
+  - {path: /robots.txt, status: 202, result: siteground-captcha-challenge}
+  - {path: /sitemap.xml, status: 202, result: siteground-captcha-challenge}
+  note: >-
+    Every path on flyr.com returns HTTP 202 with a meta-refresh to /.well-known/sgcaptcha/ and then a
+    JavaScript proof-of-work "Robot Challenge Screen". The origin is unreachable to non-browser clients,
+    so absence of a document here is unproven rather than confirmed.
+contract_discovery:
+  openapi:
+    probed_paths: [/openapi.json, /openapi.yaml, /swagger.json, /v1/openapi.json, /api-docs, /docs, /redoc]
+    result: none
+    note: >-
+      Probed against developer.flyr.com, www.flyrhospitality.com, api.pacerevenue.com,
+      legacy-api.pacerevenue.com and flyr.com. Every 200 was an HTML SPA shell; every JSON response was a
+      404 body. No document parsed as OpenAPI or Swagger.
+  graphql:
+    endpoint: https://graphql.pacerevenue.com/graphql
+    status: 200
+    introspection: disabled
+    evidence: >-
+      POST {"query":"{__schema{queryType{name}}}" } returns errors[].extensions.code =
+      GRAPHQL_VALIDATION_FAILED with message "GraphQL introspection has been disabled, but the requested
+      query contained the field \"__schema\"."
+    note: Endpoint is real and live; SDL is NOT reconstructed or inferred.
+  mcp:
+    result: none
+    note: No hosted or remote MCP server found in docs, registries or on any FLYR host.
+  agent_card:
+    result: none
+    note: >-
+      /.well-known/agent-card.json and the legacy /.well-known/agent.json miss on every host. The two 200s
+      (developer.flyr.com, app.pacerevenue.com) are HTML SPA catch-alls and are rejected. No a2a/ artifact
+      was written — an agent card is search-only and is never authored on a provider's behalf.

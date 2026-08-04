@@ -1,0 +1,35 @@
+# FLYR Hospitality
+
+> FLYR Hospitality is an AI-first hotel revenue management system (RMS) and commercial strategy platform. It replaces spreadsheets, rules-based revenue management software, and fragmented business intelligence stacks with a single AI-native platform for hotel revenue and commercial teams. Trusted by 2,300+ properties worldwide, rated 4.6/5 on HotelTechReport.
+
+FLYR Hospitality offers three core products — Optimize (AI-driven dynamic pricing and rate optimization), Insights (hotel business intelligence and reporting), and Planning (hotel revenue forecasting and budgeting) — alongside Groups, a dedicated tool for hotel group pricing and displacement analysis. The platform is designed for hotel groups and chains, independent hotels, upscale and luxury properties, limited-service and economy hotels, hostels and hybrid stay properties, resorts, and short-term/long-term stay operators.
+
+## Platform
+
+- [Optimize](https://www.flyrhospitality.com/optimize): AI hotel revenue management software with always-on dynamic pricing — hourly rate optimization, intelligent demand evaluation, and automated price decisions with full oversight and alerting. Replaces manual RMS workflows for revenue managers.
+- [Insights](https://www.flyrhospitality.com/insights): Hotel business intelligence platform — natural language querying, automated reporting, unified data platform with near real-time refresh, and market benchmarking. Eliminates siloed reporting and gives every team a single source of truth.
+- [Planning](https://www.flyrhospitality.com/planning): Hotel revenue forecasting and budgeting platform — continuously updated demand forecasts, scenario stress-testing, ensemble forecasting with uncertainty quantification, and budget vs. actual tracking.
+- [Groups](https://www.flyrhospitality.com/groups): AI-powered hotel group pricing software — displacement cost analysis, margin-first visibility, what-if scenario modelling, and alternative date recommendations to help sales teams close deals faster at higher margin.
+
+## Solutions by Vertical
+
+- [Hotel Groups & Chains](https://www.flyrhospitality.com/solutions/group-chain): One commercial engine across every property — centralised revenue management software for hotel groups and multi-property operators.
+- [Upscale & Luxury Hotels](https://www.flyrhospitality.com/solutions/upscale-luxury): AI pricing that protects your rate position — dynamic pricing and revenue management for upscale and luxury hotel properties.
+- [Limited-Service & Economy Hotels](https://www.flyrhospitality.com/solutions/limited-service): Automation that runs while you sleep — revenue management software for limited-service and economy hotels.
+- [Hybrid Stay Properties](https://www.flyrhospitality.com/solutions/hybrid): Pricing that handles any length of stay — revenue management for hostels, aparthotels, and hybrid accommodation providers.
+- [Resorts & Leisure](https://www.flyrhospitality.com/solutions/resorts-leisure): Seasonality modelled, pickup anticipated — revenue management and forecasting for resort and leisure properties.
+- [Short-Term & Long-Term Stay](https://www.flyrhospitality.com/solutions/short-long-term): One platform for every property, every stay type, every currency — revenue management for serviced apartments, extended stay, and mixed-tenure operators.
+
+## Integrations & Partners
+
+- [Integrations](https://www.flyrhospitality.com/integrations): Native two-way integrations with leading property management systems (PMS) including Mews, Oracle OPERA Cloud, Oracle OPERA On-Premise, Apaleo, Cloudbeds, RMS Cloud, Stayntouch, Planet (Protel), and more.
+- [Partners](https://www.flyrhospitality.com/partners): FLYR Hospitality's technology and channel partner ecosystem.
+
+## Resources
+
+- [Resources & Blog](https://www.flyrhospitality.com/resources): Thought leadership, customer case studies, product announcements, and industry reports on hotel revenue management, business intelligence, dynamic pricing, and hospitality technology.
+
+## Get Started
+
+- [Book a Demo](https://www.flyrhospitality.com/book-a-demo): Schedule a product demonstration with the FLYR Hospitality team.
+- [Contact](https://www.flyrhospitality.com/contact): Get in touch with FLYR Hospitality.

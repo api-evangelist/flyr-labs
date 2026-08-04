@@ -1,0 +1,96 @@
+generated: '2026-08-04'
+method: searched
+source: >-
+  FLYR product announcements and public product pages; no machine-readable contract was available to
+  derive from, so every entry below is grounded in a published FLYR claim, not in a spec.
+caveat: >-
+  FLYR publishes no OpenAPI, AsyncAPI or GraphQL SDL to anonymous callers, so the usual derived checks
+  (securitySchemes, application/problem+json, pagination shape) cannot be evaluated. Entries marked
+  `conforms: unknown` are genuinely unverifiable from public artifacts — they are NOT failures.
+standards:
+- id: iata-ndc
+  name: IATA New Distribution Capability (NDC)
+  conforms: true
+  evidence: >-
+    "Built on International Air Transport Association (IATA) open standards such as ONE Order and NDC" —
+    FLYR Offer & Order Management System announcement, 2024-09-18. The NDC Gateway component "extends
+    modern retailing capabilities beyond direct channels to indirect and B2B channels including global
+    distribution systems (GDS) and online travel agencies."
+  source: https://www.globenewswire.com/news-release/2024/09/18/2948236/0/en/FLYR-Unveils-Offer-Order-Management-System-to-Revolutionize-Airline-Retailing.html
+  x-evidence: {fetched: '2026-08-04', http_status: 200}
+- id: iata-one-order
+  name: IATA ONE Order
+  conforms: true
+  evidence: >-
+    The FLYR Order Management System is "a reliable and extensible system of record that stores order
+    information based on IATA's ONE Order philosophy" — same announcement. Note the wording is
+    "based on ... philosophy", which is an alignment claim rather than a certification claim.
+  source: https://www.globenewswire.com/news-release/2024/09/18/2948236/0/en/FLYR-Unveils-Offer-Order-Management-System-to-Revolutionize-Airline-Retailing.html
+  x-evidence: {fetched: '2026-08-04', http_status: 200}
+- id: graphql
+  name: GraphQL
+  conforms: true
+  evidence: >-
+    A live Apollo GraphQL endpoint serves the FLYR Hospitality console at
+    https://graphql.pacerevenue.com/graphql (HTTP 200, application/json). Introspection is disabled, so
+    the schema itself is not public and no SDL was captured.
+  source: https://graphql.pacerevenue.com/graphql
+  x-evidence: {fetched: '2026-08-04', http_status: 200, introspection: disabled}
+- id: llms-txt
+  name: llms.txt
+  conforms: true
+  evidence: >-
+    FLYR Hospitality publishes a well-formed llms.txt (H1 + blockquote summary + sectioned link lists) at
+    https://www.flyrhospitality.com/llms.txt. Saved verbatim to llms/flyr-labs-llms.txt. No llms.txt is
+    served on flyr.com or developer.flyr.com.
+  source: https://www.flyrhospitality.com/llms.txt
+  x-evidence: {fetched: '2026-08-04', http_status: 200, content_type: text/plain}
+- id: soc2
+  name: SOC 2
+  conforms: claimed
+  evidence: >-
+    FLYR states it holds SOC 2 Type 1 controls covering the security and trust services principles, in the
+    resource-hub article "FLYR's Uncompromising Approach to the Highest Data Security Standards". The page
+    itself could not be fetched — flyr.com serves a JavaScript captcha challenge to every non-browser
+    client — so this is recorded from the public search index, not from a direct read, and no
+    `Compliance` pointer is wired on the strength of it. There is no trust center, no attestation portal
+    and no compliance page on any FLYR host.
+  source: https://flyr.com/resource-hub/flyrs-uncompromising-approach-to-the-highest-data-security-standards/
+  x-evidence: {fetched: '2026-08-04', http_status: 202, note: siteground-captcha-challenge}
+- id: rfc9116-security-txt
+  name: RFC 9116 security.txt
+  conforms: false
+  evidence: No /.well-known/security.txt on any FLYR host — see well-known/flyr-labs-well-known.yml.
+- id: a2a-agent-card
+  name: A2A Agent Card
+  conforms: false
+  evidence: >-
+    Neither /.well-known/agent-card.json nor the legacy /.well-known/agent.json resolves to a JSON
+    AgentCard on any host; the two HTTP 200s observed are single-page-app HTML catch-alls.
+- id: mcp
+  name: Model Context Protocol
+  conforms: false
+  evidence: No hosted or remote MCP server published by FLYR.
+- id: openapi
+  name: OpenAPI
+  conforms: unknown
+  evidence: >-
+    FLYR runs a Document360 developer portal at developer.flyr.com whose "API Docs v2" module is present in
+    the page shell, but every path 302-redirects to /login. A specification may well exist behind the
+    account wall; none is reachable anonymously.
+- id: oauth2
+  name: OAuth 2.0
+  conforms: unknown
+  evidence: >-
+    No OIDC or RFC 8414 discovery document on any host; the portal itself federates to
+    identity.document360.io for its own login, which describes the docs site rather than the FLYR APIs.
+- id: rfc9457-problem-details
+  name: RFC 9457 Problem Details
+  conforms: unknown
+  evidence: No spec and no public error reference; error envelope shape not observable.
+- id: asyncapi
+  name: AsyncAPI
+  conforms: unknown
+  evidence: >-
+    No AsyncAPI document and no public webhook catalog. FLYR's PMS integrations are two-way and therefore
+    almost certainly event-driven, but nothing about that surface is published.

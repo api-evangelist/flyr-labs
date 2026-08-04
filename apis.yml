@@ -1,23 +1,159 @@
 aid: flyr-labs
 name: FLYR Labs
-description: 'FLYR Labs is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  FLYR (formerly FLYR Labs) is a San Francisco-headquartered travel technology company, founded in 2013,
+  that builds an AI-native commercial operating system for airlines, cargo carriers and hospitality
+  operators. Its airline portfolio spans the Cirrus Revenue Operating System (deep-learning forecasting,
+  dynamic pricing and revenue management) and an Offer & Order Management System built on IATA open
+  standards — NDC and ONE Order — with a certified NDC+ API, an NDC Gateway for indirect and B2B channels
+  (GDS, OTAs), and a Legacy Translator for backward compatibility with existing PSS estates. Its
+  hospitality arm, FLYR Hospitality (built on the acquired Pace Revenue platform), ships Optimize, Insights,
+  Planning and Groups to 2,300+ properties with native two-way integrations into property management
+  systems including Mews, Oracle OPERA Cloud, Apaleo, Cloudbeds, RMS Cloud, Stayntouch and Planet/Protel.
+  FLYR has raised over $500M and employs more than 700 people. Its APIs are commercial and partner-gated:
+  the developer portal at developer.flyr.com requires an account, and no OpenAPI, AsyncAPI or GraphQL
+  schema is published to anonymous callers.
+image: https://cdn.sanity.io/images/6agyjcsj/production/7a06dae28b30d7670b271bc1d675e6dec300c9a6-4668x846.webp
 url: https://raw.githubusercontent.com/api-evangelist/flyr-labs/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-04'
 modified: '2026-08-04'
 tags:
 - Company
-apis: []
+- travel-technology
+- airlines
+- hospitality
+- revenue-management
+- dynamic-pricing
+- artificial-intelligence
+- airline-retailing
+- ndc
+- offer-and-order
+- hotel-technology
+- forecasting
+- cargo
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- name: FLYR Offer & Order APIs
+  description: >-
+    FLYR's airline retailing API surface — the Offer & Order Management System (OOMS), a certified NDC+ API
+    for rich-content offers and orders, an NDC Gateway that extends modern retailing to indirect and B2B
+    channels (GDS and OTAs), and a Legacy Translator for airlines still on a traditional PSS. Documented
+    behind the FLYR developer portal; no machine-readable contract is served to anonymous callers.
+  humanURL: https://developer.flyr.com/
+  tags:
+  - airlines
+  - airline-retailing
+  - ndc
+  - offer-and-order
+  - revenue-management
+  properties:
+  - type: DeveloperPortal
+    url: https://developer.flyr.com/
+  - type: Documentation
+    url: https://developer.flyr.com/
+  x-access: partner-gated
+  x-evidence:
+    fetched: '2026-08-04'
+    url: https://developer.flyr.com/
+    http_status: 200
+    note: >-
+      Document360 knowledge base. Every path — including /docs/home, /api-docs, /sitemap.xml and every
+      /.well-known/* — 302-redirects to /login?returnTo=..., which hands off to identity.document360.io.
+      Self-registration is offered at /Account/SelfRegister. No article, OpenAPI or schema is reachable
+      without an account.
+- name: FLYR Hospitality Platform API
+  description: >-
+    The API tier behind the FLYR Hospitality (Pace Revenue) revenue management platform — Optimize, Insights,
+    Planning and Groups — serving the app.pacerevenue.com console and the native two-way property-management-system
+    integrations. Exposed as a GraphQL endpoint plus REST hosts. All hosts reject anonymous callers and
+    GraphQL introspection is disabled, so no schema is publicly obtainable.
+  humanURL: https://www.flyrhospitality.com/integrations
+  baseURL: https://api.pacerevenue.com/
+  tags:
+  - hospitality
+  - hotel-technology
+  - revenue-management
+  - dynamic-pricing
+  - forecasting
+  properties:
+  - type: GraphQL
+    url: https://graphql.pacerevenue.com/graphql
+  - type: Support
+    url: https://help.pacerevenue.com/en/
+  - type: Login
+    url: https://app.pacerevenue.com
+  x-access: customer-gated
+  x-evidence:
+    fetched: '2026-08-04'
+    hosts:
+    - url: https://api.pacerevenue.com/
+      http_status: 403
+      note: nginx 403 to anonymous callers; HSTS max-age=31536000 includeSubDomains
+    - url: https://graphql.pacerevenue.com/graphql
+      http_status: 200
+      note: >-
+        Live Apollo GraphQL endpoint. POST {__schema{queryType{name}}} returns
+        GRAPHQL_VALIDATION_FAILED — "GraphQL introspection has been disabled". Schema not published;
+        SDL deliberately NOT reconstructed.
+    - url: https://legacy-api.pacerevenue.com/
+      http_status: 404
+      note: JSON-serving legacy REST host referenced by the console bundle; no spec at any probed path
 common:
 - type: Website
-  url: https://forgeglobal.com/flyr-labs_stock/
+  url: https://flyr.com/
+- type: About
+  url: https://flyr.com/about/
+- type: DeveloperPortal
+  url: https://developer.flyr.com/
+- type: Documentation
+  url: https://developer.flyr.com/
+- type: Support
+  url: https://help.pacerevenue.com/en/
+- type: ContactUs
+  url: https://flyr.com/get-in-touch/
+- type: Blog
+  url: https://www.flyrhospitality.com/resources
+- type: GitHubOrganization
+  url: https://github.com/FlyrInc
+- type: LinkedIn
+  url: https://www.linkedin.com/company/flyrinc
+- type: Login
+  url: https://app.pacerevenue.com
+- type: TermsOfService
+  url: https://www.flyrhospitality.com/legal/customer-terms-and-conditions
+- type: PrivacyPolicy
+  url: https://flyr.com/privacy-and-cookie-policy/
+- type: Legal
+  url: https://www.flyrhospitality.com/legal
+- type: Partners
+  url: https://flyr.com/partners/
+- type: Integrations
+  url: https://www.flyrhospitality.com/integrations
+- type: LLMsTxt
+  url: llms/flyr-labs-llms.txt
+- type: Conformance
+  url: conformance/flyr-labs-conformance.yml
+- type: DomainSecurity
+  url: security/flyr-labs-domain-security.yml
+- type: WellKnownProbe
+  url: well-known/flyr-labs-well-known.yml
+- type: Packages
+  url: packages/flyr-labs-packages.yml
+x-enrichment:
+  date: '2026-08-04'
+  status: enriched
+  artifacts_added: 5
+  pass: local-v1
+x-listing-note: >-
+  flyr.com sits behind a SiteGround JavaScript proof-of-work challenge (HTTP 202 +
+  /.well-known/sgcaptcha/) that blocks all non-browser clients, including robots.txt and sitemap.xml.
+  Corporate-site URLs recorded here were confirmed from public search-index results, not from a direct
+  fetch. The reachable FLYR surfaces are www.flyrhospitality.com, developer.flyr.com (login-gated) and
+  the *.pacerevenue.com API hosts.
