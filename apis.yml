@@ -17,7 +17,7 @@ image: https://cdn.sanity.io/images/6agyjcsj/production/7a06dae28b30d7670b271bc1
 url: https://raw.githubusercontent.com/api-evangelist/flyr-labs/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-08-04'
 modified: '2026-08-04'
 tags:
