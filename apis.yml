@@ -22,6 +22,20 @@ created: '2026-08-04'
 modified: '2026-08-04'
 tags:
 - Company
+- Travel Technology
+- Airlines
+- Hospitality
+- Revenue Management
+- Dynamic Pricing
+- Artificial Intelligence
+- airline-retailing
+- NDC
+- offer-and-order
+- Hotel Technology
+- Forecasting
+- Cargo
+tags_raw:
+- Company
 - travel-technology
 - airlines
 - hospitality
@@ -48,6 +62,12 @@ apis:
     behind the FLYR developer portal; no machine-readable contract is served to anonymous callers.
   humanURL: https://developer.flyr.com/
   tags:
+  - Airlines
+  - airline-retailing
+  - NDC
+  - offer-and-order
+  - Revenue Management
+  tags_raw:
   - airlines
   - airline-retailing
   - ndc
@@ -77,6 +97,12 @@ apis:
   humanURL: https://www.flyrhospitality.com/integrations
   baseURL: https://api.pacerevenue.com/
   tags:
+  - Hospitality
+  - Hotel Technology
+  - Revenue Management
+  - Dynamic Pricing
+  - Forecasting
+  tags_raw:
   - hospitality
   - hotel-technology
   - revenue-management
