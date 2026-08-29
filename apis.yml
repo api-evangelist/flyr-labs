@@ -13,6 +13,17 @@ description: >-
   FLYR has raised over $500M and employs more than 700 people. Its APIs are commercial and partner-gated:
   the developer portal at developer.flyr.com requires an account, and no OpenAPI, AsyncAPI or GraphQL
   schema is published to anonymous callers.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://cdn.sanity.io/images/6agyjcsj/production/7a06dae28b30d7670b271bc1d675e6dec300c9a6-4668x846.webp
 url: https://raw.githubusercontent.com/api-evangelist/flyr-labs/refs/heads/main/apis.yml
 x-type: company
