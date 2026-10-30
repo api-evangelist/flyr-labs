@@ -64,33 +64,90 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-FLYR (formerly FLYR Labs) is a San Francisco travel-technology company building an AI-native commercial
-operating system for airlines, cargo carriers and hospitality operators — the Cirrus Revenue Operating
-System, an Offer & Order Management System built on the IATA NDC and ONE Order standards, and the FLYR
-Hospitality platform (Optimize, Insights, Planning, Groups) serving 2,300+ properties.
+FLYR (formerly FLYR Labs) is a San Francisco-headquartered travel technology company, founded in 2013, that builds an AI-native commercial operating system for airlines, cargo carriers and hospitality operators. Its airline portfolio spans the Cirrus Revenue Operating System (deep-learning forecasting, dynamic pricing and revenue management) and an Offer & Order Management System built on IATA open standards — NDC and ONE Order — with a certified NDC+ API, an NDC Gateway for indirect and B2B channels (GDS, OTAs), and a Legacy Translator for backward compatibility with existing PSS estates. Its hospitality arm, FLYR Hospitality (built on the acquired Pace Revenue platform), ships Optimize, Insights, Planning and Groups to 2,300+ properties with native two-way integrations into property management systems including Mews, Oracle OPERA Cloud, Apaleo, Cloudbeds, RMS Cloud, Stayntouch and Planet/Protel. FLYR has raised over $500M and employs more than 700 people. Its APIs are commercial and partner-gated: the developer portal at developer.flyr.com requires an account, and no OpenAPI, AsyncAPI or GraphQL schema is published to anonymous callers.
 
-## API posture
+**Areas:** Company · Travel Technology · Airlines · Hospitality · Revenue Management · Dynamic Pricing · Artificial Intelligence · airline-retailing · NDC · offer-and-order · Hotel Technology · Forecasting
 
-FLYR's APIs are commercial and gated. As of the 2026-08-04 enrichment pass:
+## FLYR Labs on APIs.io
 
-- **Developer portal** — `https://developer.flyr.com/` is a Document360 knowledge base where every path,
-  including `/docs/home`, `/api-docs` and `/sitemap.xml`, 302-redirects to `/login`. Self-registration is
-  offered; nothing is readable anonymously.
-- **GraphQL** — `https://graphql.pacerevenue.com/graphql` is live (HTTP 200) but introspection is
-  disabled, so no SDL was captured and none was reconstructed.
-- **REST** — `api.pacerevenue.com` returns nginx 403 to anonymous callers; `legacy-api.pacerevenue.com`
-  serves JSON 404s. No OpenAPI or Swagger document was found at any probed path on any host.
-- **No** MCP server, A2A agent card, `security.txt`, OIDC/OAuth discovery document, AsyncAPI, public
-  status page or first-party SDK was found.
-- **Found:** a real `llms.txt` at `https://www.flyrhospitality.com/llms.txt`, saved verbatim.
-- `flyr.com` itself is behind a SiteGround JavaScript proof-of-work challenge that returns HTTP 202 to
-  every non-browser client, including `robots.txt` and `sitemap.xml`, so corporate-site URLs here were
-  confirmed from public search-index results rather than a direct fetch.
+Everything profiled for FLYR Labs is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/flyr-labs/](https://apis.io/providers/flyr-labs/)** — or go straight to one of the APIs or properties below.
 
-## Links
+### APIs (2)
 
-- https://flyr.com/
-- https://www.flyrhospitality.com/
-- https://developer.flyr.com/
-- https://github.com/FlyrInc
-- https://forgeglobal.com/flyr-labs_stock/
+- [FLYR Offer & Order APIs](https://apis.io/apis/flyr-labs/flyr-offer-order-apis/) — FLYR's airline retailing API surface — the Offer & Order Management System (OOMS), a certified NDC+ API for rich-content offers and orders, an NDC Gateway…
+- [FLYR Hospitality Platform API](https://apis.io/apis/flyr-labs/flyr-hospitality-platform-api/) — The API tier behind the FLYR Hospitality (Pace Revenue) revenue management platform — Optimize, Insights, Planning and Groups — serving the…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Flyr Labs Domain Security](https://apis.io/security/flyr-labs/flyr-labs-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://flyr.com/)
+- [Documentation](https://developer.flyr.com/)
+- [Support](https://help.pacerevenue.com/en/)
+- [Blog](https://www.flyrhospitality.com/resources)
+- [Terms of service](https://www.flyrhospitality.com/legal/customer-terms-and-conditions)
+- [Privacy policy](https://flyr.com/privacy-and-cookie-policy/)
+- [GitHub](https://github.com/FlyrInc)
+
+## API Evangelist rating
+
+**Kin Score 13.6** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 7.1 |
+| Access clarity | 17.1 |
+
+**Agent readiness 2.9** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | yes |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 13.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/flyr-labs/](https://apis.io/providers/flyr-labs/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for FLYR Labs: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/flyr-labs/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
